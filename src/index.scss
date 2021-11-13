@@ -1,13 +1,327 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+$bg-primary: #222f33;
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@mixin flexCenter($nature: center) {
+  display: flex;
+  align-items: center;
+  justify-content: $nature;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  color: #fff;
+  margin-top: 2rem;
+  z-index: 10;
+
+  .container {
+    @include flexCenter(space-between);
+  }
+  div {
+    @include flexCenter();
+    gap: 0.3rem;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+
+  nav {
+    ul {
+      @include flexCenter();
+      gap: 2rem;
+
+      li {
+        list-style-type: none;
+        font-weight: 600;
+
+        a {
+          text-decoration: none;
+          color: #fff;
+        }
+
+        a.contact {
+          background: #fff;
+          padding: 0.5rem 0.9rem;
+          border-radius: 0.3rem;
+          color: #616c75;
+        }
+      }
+    }
+
+    @media (max-width: 1000px) {
+      display: none;
+    }
+  }
+
+  .ham-menu {
+    @media (min-width: 1000px) {
+      display: none;
+    }
+  }
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+section.hero {
+  width: 100%;
+  height: 90vh;
+  background-color: rgba(0, 0, 0, 1);
+  background: url("./images/IMG-1.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include flexCenter();
+  gap: 5rem;
+  color: #fff;
+  position: relative;
+
+  .container {
+    @include flexCenter(space-between);
+    z-index: 7;
+
+    @media (max-width: 1000px) {
+      @include flexCenter();
+      flex-direction: column;
+      gap: 5rem;
+      text-align: center;
+    }
+    aside,
+    div {
+      height: 100%;
+    }
+
+    .info {
+      width: 50ch;
+      @media (max-width: 1000px) {
+        width: 100%;
+      }
+      h1 {
+        font-weight: 300;
+        font-size: 1.5rem;
+        margin-bottom: 0.3rem;
+        color: #dadddd;
+      }
+
+      p {
+        font-size: 2rem;
+        font-weight: 600;
+      }
+    }
+
+    div {
+      @include flexCenter();
+      gap: 0.3rem;
+    }
+  }
+  .social {
+    position: absolute;
+    right: -3rem;
+    height: max-content;
+    font-size: 0.7rem;
+    font-weight: 100;
+    @include flexCenter();
+    gap: 2rem;
+    transform: rotate(90deg);
+    z-index: 7;
+
+    h3 {
+      transition-property: transform;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      &:hover {
+        transform: translateY(1rem);
+      }
+    }
+
+    @media (max-width: 1000px) {
+      display: none;
+    }
+    @media (max-width: 830px) {
+      right: -6rem;
+    }
+  }
+
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba($color: #000000, $alpha: 0.4);
+    position: absolute;
+    z-index: 5;
+  }
+}
+
+main {
+  .section__more {
+    position: relative;
+
+    .overlay {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 40%;
+      height: 40%;
+      background-color: $bg-primary;
+      z-index: 1;
+
+      @media (max-width: 1000px) {
+        display: none;
+      }
+    }
+
+    .container {
+      padding-top: 2rem;
+      padding-bottom: 3rem;
+
+      @media (max-width: 1000px) {
+        text-align: center;
+      }
+
+      p {
+        width: 50ch;
+        margin: 1rem 0;
+        line-height: 2rem;
+        color: #616c75;
+
+        @media (max-width: 1000px) {
+          width: 100%;
+        }
+      }
+
+      img {
+        background-color: #fff;
+        transform: translateY(-20%);
+        z-index: 7;
+
+        @media (max-width: 1000px) {
+          transform: translateY(0);
+          margin-top: 2rem;
+          margin-bottom: 1rem;
+        }
+      }
+
+      a {
+        display: inline-block;
+        color: #93999b;
+        padding: 0.4rem 0.7rem;
+        border: 2px solid #9b9393;
+        border-radius: 0.3rem;
+        text-decoration: none;
+        transition-property: transform;
+        transition-duration: 0.3s;
+
+        &:hover {
+          color: #242222;
+          border-color: #242222;
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+  .inn {
+    background-color: $bg-primary;
+    color: #fff;
+
+    p.inn {
+      width: 50ch;
+      color: #b2b7b8;
+
+      @media (max-width: 1000px) {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    h1 {
+      color: #fff;
+      margin-bottom: 1rem;
+
+      @media (max-width: 1000px) {
+        text-align: center;
+      }
+    }
+    .baseline > p {
+      margin-top: 2.5rem;
+    }
+  }
+  section {
+    .container {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+      color: $bg-primary;
+      @include flexCenter(space-between);
+
+      @media (max-width: 1000px) {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .more__info {
+        height: 100%;
+
+        .info {
+          padding-bottom: 2rem;
+
+          h1 {
+            margin-bottom: 0.3rem;
+          }
+          @media (max-width: 1000px) {
+            text-align: center;
+          }
+        }
+
+        .info p {
+          width: 30ch;
+          font-size: 0.8rem;
+          color: #93999b;
+
+          @media (max-width: 1000px) {
+            width: 40ch;
+          }
+        }
+      }
+    }
+  }
+}
+
+footer {
+  background-color: $bg-primary;
+  padding: 2rem 3rem;
+  color: #fff;
+
+  @include flexCenter(space-between);
+
+  div {
+    @include flexCenter();
+    gap: 0.3rem;
+
+    ul {
+      @include flexCenter();
+      gap: 1rem;
+      li {
+        list-style-type: none;
+      }
+    }
+  }
+
+  @media (max-width: 1000px) {
+    @include flexCenter();
+    flex-direction: column;
+    gap: 3rem;
+  }
 }
