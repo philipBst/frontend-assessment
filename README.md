@@ -1,3 +1,3 @@
 ## Live preview on netlify
 
-some title [http://localhost:3000](http://localhost:3000)
+some title [Click here](https://philipbst-frontend-assessment.netlify.app/)
